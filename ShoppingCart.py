@@ -20,9 +20,7 @@ class ShoppingCart:
         if not item_in_cart:
             print('Item not found in cart. Nothing Removed')
 
-    # Modifies an item's description, price, and/or quantity. Has parameter ItemToPurchase. Does not return anything.
-    # If item can be found (by name) in cart, check if parameter has default values for description, price, and quantity.
-    # If not, modify item in cart.
+    # If item can be found (by name) in cart, modify item quantity in cart.
     # If item cannot be found (by name) in cart, output this message: Item not found in cart. Nothing modified.
     def modify_item(self, item_name ):
         item_in_cart = False
@@ -51,17 +49,18 @@ class ShoppingCart:
     # Method to output total of objects in cart. If cart is empty, output the message "shopping cart is empty"
     def print_total(self):
         if len(self.cart_items) > 0:
-            print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
-            print('Number of items: {}'.format(self.get_num_items_in_cart()))
+            print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date).center(50))
+
+            print('Number of items: {}:'.format(self.get_num_items_in_cart()).center(50))
             for item in self.cart_items:
-                print(item.print_item_cost())
-            print('Total: ${:.2f}'.format(self.get_cost_of_cart()))
+                print('{}'.format(item.print_item_cost()).center(50))
+            print('Total: ${:.2f}'.format(self.get_cost_of_cart()).center(50))
         else:
             print('SHOPPING CART IS EMPTY')
 
     # Method to output each item's description
     def print_descriptions(self):
-        print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
-        print('Item Descriptions')
+        print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date).center(50))
+        print('Item Descriptions'.center(50))
         for item in self.cart_items:
-            print('{}: {}'.format(item.item_name, item.item_description))
+            print('{}: {}'.format(item.item_name, item.item_description).center(50))
